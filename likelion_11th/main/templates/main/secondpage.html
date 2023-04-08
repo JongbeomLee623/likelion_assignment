@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div>
+    <h3><b>More Info.</b></h3>
+</div>
+
+<div class = "basicinfo">
+    <ul>
+        <li>나이: 24세</li>
+        <li>전공: 경영정보학과/융합소프트웨어학과</li>
+        <li>MBTI: ISFP</li>
+        <a href = "https://mercurial-pipe-bcc.notion.site/4b31dcb779584ccfbf23419676cee902"
+    target ="_blank">노션에서 자기소개 보러가기</a>
+    </ul>
+       
+</div>
+
+<div class = "summary">
+    <p><b>멋쟁이사자처럼 11기 세션 정리</b></p>
+    
+    <ul class = "week" style="list-style-type: none;">
+       <li>
+        <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+            1주차
+            </a><div style="DISPLAY: none">
+                OT 및 자기소개
+            </div>
+       </li>
+
+       <li>
+        <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+            2주차
+            </a><div style="DISPLAY: none">
+                Git 협업 및 django 개발환경 세팅
+                <ul class = "details" style="list-style-type: none;">
+                    <li>
+                        <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+                            git 협업
+                             </a><div style="DISPLAY: none">
+                                <ol>
+                                    <li>디렉토리 생성</li>
+                                    <li>repository 생성 (협업 시 최상위 레포지토리 fork로 개인 레포지토리에 복사)</li>
+                                    <li>vscode로 workspace 열고 새 터미널 열고 git bash로 변경</li>
+                                    <li>git init 초기화</li>
+                                    <li>git clone <개인 레포지토리 url></li>
+                                    <li>
+                                        git remote add origin <개인 레포지토리 url>
+                                        git remote add upstream <협업 레포지토리 url>
+                                        git remote -v로 확인 ...
+                                    </li> 
+                                    <li>branch 생성 [git checkout -b 브랜치명, 생성과 이동 동시]</li>
+                                    <li>
+                                        git add . [작업한 파일 모두 add]
+                                        git commit -m "커밋내용"
+                                        git push origin <개인 브랜치명>
+                                    </li>
+                                    <li>
+                                        github 개인 레포지토리에 PR
+                                        upstream에 pr요청
+                                        merge 되고 git pull upstream main
+                                    </li>
+                                </ol>
+                                
+                             </div>
+                    </li>
+                    <li>
+                        <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+                            django
+                             </a><div style="DISPLAY: none">
+                                 <ol>
+                                    <li>가상환경 설치: $pip3 install pipenv</li>
+                                    <li>가상환경 실행: $pipenv shell</li>
+                                    <li>장고 설치: $pip install django</li>
+                                    <li>프로젝트 파일 생성: $django-admin startproject [project name]</li>
+                                    <li>settings.py 초기설정: allowed host, language, time 등 설정</li>
+                                    <li>APP 설치: $python manage.py startapp [app name] *manage.py 파일 있는 디렉토리에서 실행</li>
+                                    <li>settings.py의 installed_apps에 app_name 추가</li>
+                                    <li>$pyhton manage.py migrate / $python manage.py makemigrations</li>
+                                    <li>서버 실행: $python manage.py runserver</li>
+                                    <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+                                        * 프로젝트와 app 비교
+                                    </a><div style="DISPLAY: none">
+                                        <a>
+                                            <img src = "{% static 'images/project_app.png' %}" style="width: 500px;">
+                                        </a>
+                                 </ol>
+                             </div>
+                    </li>
+
+                </ul>
+
+            </div>
+       </li>
+
+       <li>
+        <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+            3주차
+            </a><div style="DISPLAY: none">
+                트랙별 교육 - 백엔드_django 상속<br>
+                <ol>
+                    <li>url을 입력하면 views.py에서 url에 해당하는 데이터 요청<br>-> 요청한 데이터에 맞는 html을 거져와 web에 보여줌</li>
+                    <li>templates 언어 사용<br>ex: &#123;% url '[name]' %&#125;<br>
+                    변수, 필터, 태그, 주석 등 4가지 기능 제공</li>
+                    <li>상속 - 반복되는 코드를 분리해 다른 페이지에서도 상속받을 수 있게 함.<br>
+                    &#123;% block content %&#125;<br>
+                    > 다른 파일에서 재사용 가능한 html 정의 < <br>
+                    &#123;% endblock %&#125;<br>
+                    &#123;% extends 'base.html' %&#125; -> base.html을 불러오고 block을 통해 상속시킴.<br>
+                    이 때, settings.py에서 TEMPLATES의 DIRS 에 템플릿 파일을 찾을 수 있는 경로를 추가해줌.<br>
+                    &#123;% include '다른 템플릿파일 경로/파일 이름' %&#125; -> 다른 템플릿 파일을 포함시킴.<br></li>
+                    <li>static - 웹 페이지에서 사용되는 정적인 파일을 저장하는 디렉토리 [image, JS, CSS]<br>
+                    이 때, &#123;% load static %&#125;을 사용해 html에서 static파일을 불러오겠다고 선언해주어야 함.<br>
+                    또, settings.py에서도 static 파일을 불러올 수 있도록 경로를 지정해 주어야함.</li>
+                </ol>
+            </div>
+       </li>
+
+    </ul>
+</div>
+
+{% endblock %}

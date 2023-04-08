@@ -1,0 +1,33 @@
+h3 {
+    color:#FF803C;
+    font-family: 'Gaegu', sans-serif;
+    font-weight: 900;
+    margin-left: 10px;
+}
+
+a { 
+    font-family: 'Gaegu', sans-serif;
+    font-size: 20px;
+}
+.navbar{
+    font-weight: bold;
+}
+
+.basicinfo {
+    color: darkcyan;
+    font-size:20px;
+    font-family:'Gaegu', sans-serif;
+    margin-left: 10px;
+}
+
+.summary{
+    color:#FF803C;;
+    font-size:20px;
+    font-family:'Gaegu', sans-serif;
+    margin-left: 10px;    
+}
+
+.week{
+    color: black;
+    font-size: medium;
+}
