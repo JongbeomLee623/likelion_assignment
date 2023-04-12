@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<form action = "{% url 'create' %}" method="POST">
+    {% csrf_token %}
+    <div>
+        <p>제목 : <input type="text" name="title"></p>
+        <p>작성자 : <input type="text" name="writer"></p>
+        <p>내용 : <textarea type="text" name="body" id="" cols="30" rows="10"></textarea></p>
+        <p>기분 : 
+            <select name="mood">
+              <option value="good">좋아요</option>
+              <option value="bad">별로에요</option>
+              <option value="so-so">아무 생각이 없어요</option>
+            </select>
+          </p>
+        <p>오늘의 TMI : <input type="text" name="tmi"></p>
+        <button type="submit">제출</button>
+    </div>
+    
+</form>
+
+{% endblock %}

@@ -1,3 +1,11 @@
+h1 {
+    color:cadetblue;
+    font-family: 'Gaegu', sans-serif;
+    font-weight: 900;
+    margin-left: 10px;
+}
+
+
 h3 {
     color:#FF803C;
     font-family: 'Gaegu', sans-serif;
@@ -5,11 +13,17 @@ h3 {
     margin-left: 10px;
 }
 
-
+h4 {
+    color:cadetblue;
+    font-family: 'Gaegu', sans-serif;
+    font-weight: 900;
+    margin-left: 5px;
+}
 a { 
     font-family: 'Gaegu', sans-serif;
     font-size: 20px;
 }
+
 .navbar{
     font-weight: bold;
 }
@@ -38,4 +52,23 @@ a {
     font-size:20px;
     font-family:'Gaegu', sans-serif;
     margin-left: 13px;    
+}
+.create {
+    color: black;
+    font-family: 'Gaegu', sans-serif;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.more {
+    color: cadetblue;
+    font-family: 'Gaegu', sans-serif;
+    font-size: 20px;
+    
+}
+
+.title {
+    color: black;
+    font-family: 'Gaegu', sans-serif;
+    margin-left: 0;
+    font-weight: bold;
 }
