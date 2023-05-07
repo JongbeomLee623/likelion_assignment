@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container" id="UD">
+    <h1>글 수정하기</h1>
+    <form action = "{% url 'main:update' post.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>제목: <input type="text" name="title" value="{{post.title}}"></p>
+        <p>작성자: <input type="text" name="writer" value="{{post.writer}}"></p>
+        <p>사진: <input type="file" accept = "image/*" name ="image" value="{{post.image}}"></p>
+        <p>내용: <textarea name="body" id="" cols="30" rows="10">{{post.body}}</textarea></p>
+        <p>기분 : 
+            <select name="mood">
+                <option value="good">좋아요</option>
+                <option value="bad">별로에요</option>
+                <option value="so-so">아무 생각이 없어요</option>
+            </select>
+        </p>
+        <p>TMI: <input type="text" name = "tmi" value="{{post.tmi}}"></p>
+        <button type="submit">제출</button>
+    </form>
+
+
+</div>
+
+
+{% endblock %}

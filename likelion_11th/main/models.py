@@ -10,6 +10,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     writer = models.CharField(max_length=100)
     pub_date = models.DateTimeField()
+    image = models.ImageField(upload_to="post/", blank=True, null=True)
     body = models.TextField()
     mood = models.CharField(max_length=5, choices=MOOD, default='so-so')
     tmi = models.CharField(max_length=100)
@@ -19,4 +20,3 @@ class Post(models.Model):
     
     def summary(self):
         return self.body[:20]
-

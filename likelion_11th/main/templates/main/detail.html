@@ -3,11 +3,18 @@
 
 {% block content %}
 <h1>{{post.title}}</h1>
-작성자 : {{post.writer}}
-날짜 : {{post.pub_date}}
-기분 : {{post.mood}}
-TMI : {{post.tmi}}
-<hr>
-<p>{{post.body}}</p>
+<div class = 'detail'>
+    작성자 : {{post.writer}}
+    최종 수정 날짜 : {{post.pub_date}}
+    {% if post.image %}
+            <p><img src="{{post.image.url}}" alt="사진" style="max-height: 600; max-width: 400px;" onclick="window.open(this.src)"></p>
+    {% endif %}
+    기분 : {{post.mood}}
+    TMI : {{post.tmi}}
+    <hr>
+    <p>{{post.body}}</p>
+</div>
+<a href="{% url 'main:edit' post.id %}" class = "UD">수정하기</a>
+<a href="{% url 'main:delete' post.id %}" class = "UD">삭제하기</a>
 
 {% endblock %}

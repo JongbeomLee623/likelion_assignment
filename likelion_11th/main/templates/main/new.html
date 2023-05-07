@@ -2,11 +2,12 @@
 {% load static %}
 
 {% block content %}
-<form action = "{% url 'create' %}" method="POST">
+<form action = "{% url 'main:create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <div>
+    <div class = "new">
         <p>제목 : <input type="text" name="title"></p>
         <p>작성자 : <input type="text" name="writer"></p>
+        <p>사진 : <input type="file" accept = "image/*" name ="image" ></p>
         <p>내용 : <textarea type="text" name="body" id="" cols="30" rows="10"></textarea></p>
         <p>기분 : 
             <select name="mood">

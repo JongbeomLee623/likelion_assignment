@@ -13,7 +13,7 @@
     <p class = "maincontent">개인 프로젝트 과제입니다.</p>
     <br>
 </div>
-    <a class = "create" href="{% url 'new' %}">글 쓰기</a>
+    <a class = "create" href="{% url 'main:new' %}">글 쓰기</a>
     <a onclick = "this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
         <h4>글 목록</h4>
         </a><div style="DISPLAY: none">
@@ -21,11 +21,14 @@
                 {% for post in posts %}
                 <div class = "create">
                     <h3 class = "title">{{post.title}}</h3>
-                    {{post.writer}}<br>
-                    {{post.summary}}
-                    <a href="{% url 'detail' post.id%}">자세히... </a><br>
-                    {{post.mood}}<br>
-                    {{post.tmi}}<br>
+                    작성자: {{post.writer}}<br>
+                    내용: {{post.summary}}
+                    {% if post.image %}
+                        <p><img src="{{post.image.url}}" alt="사진" style="max-height: 300; max-width: 200px;"></p>
+                    {% endif %}
+                    <a href="{% url 'main:detail' post.id%}">자세히... </a><br>
+                    기분: {{post.mood}}<br>
+                    TMI: {{post.tmi}}<br>
                 </div>
                 {% endfor %}
             </div>

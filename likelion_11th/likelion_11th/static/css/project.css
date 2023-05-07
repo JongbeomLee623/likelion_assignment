@@ -72,3 +72,25 @@ a {
     margin-left: 0;
     font-weight: bold;
 }
+.detail{
+    color: black;
+    font-size:20px;
+    font-family:'Gaegu', sans-serif;
+    margin-left: 10px;
+    
+}
+.new{
+    color: black;
+    font-size:20px;
+    font-family:'Gaegu', sans-serif;
+    margin-left: 10px;
+}
+.UD{
+    margin-left: 10px;
+}
+.container{
+    color: black;
+    font-size:20px;
+    font-family:'Gaegu', sans-serif;
+    margin-left: 10px;
+}
