@@ -19,6 +19,12 @@ h4 {
     font-weight: 900;
     margin-left: 5px;
 }
+h5 {
+    color: black;
+    font-family: 'Gaegu', sans-serif;
+    font-weight: 900;
+    margin-left: 10px;
+}
 a { 
     font-family: 'Gaegu', sans-serif;
     font-size: 20px;
@@ -70,7 +76,7 @@ a {
     color: black;
     font-family: 'Gaegu', sans-serif;
     margin-left: 0;
-    font-weight: bold;
+    font-weight: 600;
 }
 .detail{
     color: black;
@@ -92,5 +98,15 @@ a {
     color: black;
     font-size:20px;
     font-family:'Gaegu', sans-serif;
+    margin-left: 10px;
+}
+
+.profile-pic {
+    max-height: 100px;
+    max-width: 100px;
+    margin-left: 50px;
+}
+
+.post {
     margin-left: 10px;
 }

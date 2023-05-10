@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% if user.profile.profile_pic %}
+        <img src="{{ user.profile.profile_pic.url }}" alt="프로필 사진" class="profile-pic" onclick="window.open(this.src)">
+    {% endif %}
+    <h5> 현재 접속중인 ID: {{ user.username }}</h5>
+    <h5>{{ user.profile.nickname}}님 안녕하세요.</h5>
+    <h5>당신의 학과는 {{ user.profile.department }} 입니다.</h5>
+    <br>
+    <a onclick = "this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+        <h5>글 목록</h5>
+        </a><div style="DISPLAY: none">
+            <div>
+                    {% for post in posts %}
+                    <div class = 'post'>
+                        <a href="{% url 'main:detail' post.id%}"><h3 class = "title">{{post.title}}</h3></a>
+                    </div>
+                    {% endfor %}
+            </div>
+        </div>
+
+
+{% endblock %}

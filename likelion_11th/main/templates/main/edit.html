@@ -7,7 +7,14 @@
     <form action = "{% url 'main:update' post.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <p>제목: <input type="text" name="title" value="{{post.title}}"></p>
-        <p>작성자: <input type="text" name="writer" value="{{post.writer}}"></p>
+        {% if request.user.is_authenticated %}
+            <p>작성자 :
+            {% if request.user.profile.nickname %}
+                <input type="text" name="writer" value="{{ request.user.profile.nickname }}" readonly>
+            {% endif %}</p>
+        {% else %}
+            <p>작성자 : <input type="text" name="writer" value="(비회원)" readonly></p>
+        {% endif %}
         <p>사진: <input type="file" accept = "image/*" name ="image" value="{{post.image}}"></p>
         <p>내용: <textarea name="body" id="" cols="30" rows="10">{{post.body}}</textarea></p>
         <p>기분 : 

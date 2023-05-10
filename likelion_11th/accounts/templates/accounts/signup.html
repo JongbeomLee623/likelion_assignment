@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form action="{% url 'accounts:signup' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>username</p>
+    <input type="text" name="username">
+    <br>
+
+    <p>password</p>
+    <input type="password" name="password">
+    <br>
+
+    <p>confirm</p>
+    <input type="password" name="confirm">
+    <br>
+    
+    <p>프로필 사진</p>
+    <div class="profile-pic-wrapper">
+        <input type="file" accept="image/*" name="profile_pic" id="profile-pic-input">
+        <label for="profile-pic-input">
+            <div class="profile-pic-preview"></div>
+        </label>
+    </div>
+
+    <p>별명</p>
+    <input type="text" name="nickname">
+    <br>
+
+    <p>학과</p>
+    <input type="text" name="department">
+    <br>
+
+    <input type="submit" value="회원가입">
+
+</form>
+
+<style>
+    .profile-pic-preview {
+    width: 50px;
+    height: 50px;
+    background-color: #bbb;
+    border-radius: 4px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+</style>
+<script>
+    const profilePicInput = document.getElementById('profile-pic-input');
+    const profilePicPreview = document.querySelector('.profile-pic-preview');
+
+    profilePicInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener('load', function(event) {
+            profilePicPreview.style.backgroundImage = `url(${event.target.result})`;
+    });
+
+    reader.readAsDataURL(file);
+});
+
+</script>
+
+{% endblock %}

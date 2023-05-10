@@ -14,7 +14,17 @@
     <hr>
     <p>{{post.body}}</p>
 </div>
-<a href="{% url 'main:edit' post.id %}" class = "UD">수정하기</a>
-<a href="{% url 'main:delete' post.id %}" class = "UD">삭제하기</a>
+{% if request.user.is_authenticated %}
+    {% if is_author %}
+        <a href="{% url 'main:edit' post.id %}" class = "UD">수정하기</a>
+        <a href="{% url 'main:delete' post.id %}" class = "UD">삭제하기</a>
+    {% else %}
+    <a href="" class = "UD">수정하기</a>
+    <a href="" class = "UD">삭제하기</a>
+    {% endif %}
+{% else %}
+    <a href="" class = "UD">수정하기</a>
+    <a href="" class = "UD">삭제하기</a>
+{% endif %}
 
 {% endblock %}
