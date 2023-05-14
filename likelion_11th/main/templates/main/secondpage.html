@@ -208,9 +208,9 @@
                     <li>CRUD - Delete
                         <ul>
                             <li>def delete(request,id):<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;delete_post = Post.objects.get(id=id)<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;delete_post.delete()<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;return redirect('main:mainpage')<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;    delete_post = Post.objects.get(id=id)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;    delete_post.delete()<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;    return redirect('main:mainpage')<br>
                                 delete 함수 실행되면 main의 mainpage경로로 이동. mainpage 함수 실행. 
                             </li>
                         </ul>
@@ -228,14 +228,50 @@
                     <li>과제
                         <ul>
                             <li> Media 업데이트 기능 구현</li>
-                            <li>if update_post.image is None:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;만약 기존 이미지가 없으면 <br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;update_post.image = request.FILES.get('image')&nbsp;&nbsp;&nbsp;&nbsp;제출한 이미지를 update_post.image에 저장<br>
-                            elif request.FILES.get('image'): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;만약 기존 이미지가 있고 요청이 들어온 경우<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;update_post.image = request.FILES.get('image')&nbsp;&nbsp;&nbsp;&nbsp; 새 요청으로 기존 이미지를 덮어쓰고,<br>
+                            <li>if update_post.image is None:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  만약 기존 이미지가 없으면 <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;update_post.image = request.FILES.get('image')&nbsp;&nbsp;&nbsp;&nbsp;  제출한 이미지를 update_post.image에 저장<br>
+                            elif request.FILES.get('image'): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   만약 기존 이미지가 있고 요청이 들어온 경우<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;update_post.image = request.FILES.get('image')&nbsp;&nbsp;&nbsp;&nbsp;  새 요청으로 기존 이미지를 덮어쓰고,<br>
                             요청이 없는 경우엔 기존 이미지를 유지함.
                             </li>
                             <li> Media delete 기능 구현</li>
                         </ul>
+                    </li>
+                </ol>
+            </div>
+       </li>
+
+       <li>
+        <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
+            6주차
+            </a><div style="DISPLAY: none">
+                트랙별 교육 - login, logout(auth), signup(onetoone) <br>
+                <ol>
+                    <li> auth, allauth <br>
+                        auth : User Model 존재, 커스텀 가능?<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;signup 기능 직접 구현<br> 
+                        
+                        allauth : User Model 정의할 때마다 migration 필요, 커스텀 힘듦,,?<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이메일 인증, 소셜 로그인, login, logout, signup 등 유저 기능 다 완성된 패키지.
+                    </li>
+                    <li> auth 사용 - 앱 생성 및 등록 후 Login 함수 만들기 <br>
+                        views.py에서 auth라이브러리 상속, login 함수 구현 > POST 요청 login, GET 요청 login.html 화면. <br>
+                        urls.py에서 app_name, urlpatterns 정리 > path(url, views.py에 작성된 실행할 함수, name) / 프로젝트의 urls.py의 path도 추가 <br>
+                        login.html 작성 / form의 기본 형태 : form action = "데이터가 전달될 주소(이동할 주소)" method = "http 요청 방식(POST or GET)" <br>
+                        > html 작성, views.py 수정, urls.py 수정 순으로 하면 오류가 적다..?
+                    </li>
+                    <li> auth - logout 함수 구현 <br>
+                        auth.logout(request) > 현재 로그인 유저 로그아웃 처리 (auth 기본 제공 기능)
+                    </li>
+                    <li> signup 함수 구현 <br>
+                        POST 방식이고, password == confirm 일 때, User.objects.create_user() 통해 user 생성 후 로그인 
+                    </li>
+                    <li> Usercustom/onetoonefield <br>
+                        하나의 User Model에 하나의 Profile 모델 연결 : onetoone <br>
+                        Profile Model을 추가하여 기존 User Model에서 저장하지 못한 부가적인 정보 저장 <br>
+                        장고의 인증 시스템을 그대로 활용, <strong>권한부여와 상관없는</strong> 사용자 데이터 저장하고자 할 때 쓰임 <br>
+                        Profile Model > user = models.OneToOneField(User, on_delete = models.CASCADE) > Profile과 User 1:1 연결, 삭제 시 같이 삭제. <br>
+                        &#123;&#123;% user.profile.nickname %&#125;&#125; > User 안 Profile 모델의 nickname column 가져오기. <br>
                     </li>
                 </ol>
             </div>
