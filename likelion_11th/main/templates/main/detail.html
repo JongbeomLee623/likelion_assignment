@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block content %}
-<h1>{{post.title}}</h1>
+<div class = "colorless">
+<h1>{{post.title}}</h1></div>
 <div class = 'detail'>
     작성자 : {{post.writer}}
     최종 수정 날짜 : {{post.pub_date}}
@@ -13,18 +14,35 @@
     TMI : {{post.tmi}}
     <hr>
     <p>{{post.body}}</p>
+    <p> 태그 : 
+        {% for tag in post.tags.all %}
+        <a href="{% url 'main:tag_posts' tag.pk %}">{{ tag.name }}</a>
+        {% endfor %}
+    </p>
 </div>
-{% if request.user.is_authenticated %}
-    {% if is_author %}
-        <a href="{% url 'main:edit' post.id %}" class = "UD">수정하기</a>
-        <a href="{% url 'main:delete' post.id %}" class = "UD">삭제하기</a>
-    {% else %}
-    <a href="" class = "UD">수정하기</a>
-    <a href="" class = "UD">삭제하기</a>
-    {% endif %}
-{% else %}
-    <a href="" class = "UD">수정하기</a>
-    <a href="" class = "UD">삭제하기</a>
+{% if post.writer == user %}
+    <a href="{% url 'main:edit' post.id %}" class = "UD">수정하기</a>
+    <a href="{% url 'main:delete' post.id %}" class = "UD">삭제하기</a>
 {% endif %}
+
+<div class="comment_container">
+    <div class="comment_form">
+        <br>
+        <h5>&nbsp;댓글 작성하기</h5>
+        <form method="POST" action="{% url 'main:detail' post.id %}">
+            {% csrf_token %}
+            &nbsp;&nbsp;<input type="text" name="content">
+            <input type="submit" name="submit">
+        </form>
+    </div>
+    <div class="comment_list">
+        {% for comment in comments %}
+            <hr>
+            <h4>작성자 : {{ comment.writer }}</h4>
+            <p>내용 : {{ comment.content }}</p>
+            <p>{{ comment.pub_date }}</p>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}

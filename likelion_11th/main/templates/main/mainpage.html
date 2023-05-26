@@ -10,10 +10,12 @@
     </div>
 <div>
     <h3><b>안녕하세요!<br>멋쟁이사자처럼 11기 이종범입니다.</b></h3>
-    <p class = "maincontent">개인 프로젝트 과제입니다.</p>
+    <p>개인 프로젝트 과제입니다.</p>
     <br>
 </div>
+    {% if user.is_authenticated %}
     <a class = "create" href="{% url 'main:new' %}">글 쓰기</a>
+    {% endif %}
     <a onclick = "this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
         <h4>글 목록</h4>
         </a><div style="DISPLAY: none">

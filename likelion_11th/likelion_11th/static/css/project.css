@@ -1,35 +1,43 @@
-h1 {
-    color:cadetblue;
-    font-family: 'Gaegu', sans-serif;
-    font-weight: 900;
-    margin-left: 10px;
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    font-family: 'GmarketSansMedium';
 }
 
+h1 {
+    color:black;
+    font-family: 'GmarketSansMedium', sans-serif;
+    font-weight: 900;
+    
+}
 
 h3 {
     color:#FF803C;
-    font-family: 'Gaegu', sans-serif;
+    font-family: 'GmarketSansMedium', sans-serif;
     font-weight: 900;
-    margin-left: 10px;
 }
 
 h4 {
     color:cadetblue;
-    font-family: 'Gaegu', sans-serif;
-    font-weight: 900;
-    margin-left: 5px;
+    font-family: 'GmarketSansMedium', sans-serif;
+    
 }
 h5 {
     color: black;
-    font-family: 'Gaegu', sans-serif;
-    font-weight: 900;
-    margin-left: 10px;
+    font-family: 'GmarketSansMedium', sans-serif;
+
 }
 a { 
-    font-family: 'Gaegu', sans-serif;
-    font-size: 20px;
+    font-family: 'GmarketSansMedium', sans-serif;
 }
 
+p {
+    font-family: 'GmarketSansMedium', sans-serif;
+}
 .navbar{
     font-weight: bold;
 }
@@ -37,76 +45,62 @@ a {
 .basicinfo {
     color: darkcyan;
     font-size:20px;
-    font-family:'Gaegu', sans-serif;
-    margin-left: 10px;
+    font-family:'GmarketSansMedium', sans-serif;
+    
 }
 
 .summary{
-    color:#FF803C;;
-    font-size:20px;
-    font-family:'Gaegu', sans-serif;
-    margin-left: 10px;    
+    font-size:15px;
+    font-family:'GmarketSansMedium', sans-serif;
 }
 
-.week{
-    color: black;
-    font-size: medium;
-}
 
 .maincontent{
     color: black;
     font-size:20px;
-    font-family:'Gaegu', sans-serif;
+    font-family:'GmarketSansMedium', sans-serif;
     margin-left: 13px;    
 }
 .create {
     color: black;
-    font-family: 'Gaegu', sans-serif;
+    font-family: 'GmarketSansMedium', sans-serif;
     font-size: 20px;
-    margin-left: 10px;
+    
 }
 .more {
     color: cadetblue;
-    font-family: 'Gaegu', sans-serif;
+    font-family: 'GmarketSansMedium', sans-serif;
     font-size: 20px;
     
 }
 
 .title {
     color: black;
-    font-family: 'Gaegu', sans-serif;
-    margin-left: 0;
-    font-weight: 600;
+    font-family: 'GmarketSansMedium', sans-serif;
 }
 .detail{
     color: black;
     font-size:20px;
-    font-family:'Gaegu', sans-serif;
-    margin-left: 10px;
+    font-family:'GmarketSansMedium', sans-serif;
+    
     
 }
 .new{
     color: black;
     font-size:20px;
-    font-family:'Gaegu', sans-serif;
-    margin-left: 10px;
+    font-family:'GmarketSansMedium', sans-serif;
+    
 }
-.UD{
-    margin-left: 10px;
-}
+
 .container{
     color: black;
     font-size:20px;
-    font-family:'Gaegu', sans-serif;
-    margin-left: 10px;
+    font-family:'GmarketSansMedium', sans-serif;
+    
 }
 
 .profile-pic {
     max-height: 100px;
     max-width: 100px;
     margin-left: 50px;
-}
-
-.post {
-    margin-left: 10px;
 }
