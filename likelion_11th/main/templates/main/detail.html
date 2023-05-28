@@ -46,7 +46,12 @@
 
                 {% endif %}
             </div>
-            <p>내용 : {{ comment.content }}</p>
+            <p>내용 : {{ comment.content }} <br>
+                태그 : 
+                {% for tag in comment.tags.all %}
+                <a href="{% url 'main:tag_posts' tag.pk %}">{{ tag.name }}</a>
+                {% endfor %}
+            </p>
             <p>{{ comment.pub_date }}</p>
         {% endfor %}
     </div>
