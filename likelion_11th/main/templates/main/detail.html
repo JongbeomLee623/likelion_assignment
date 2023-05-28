@@ -21,8 +21,8 @@
     </p>
 </div>
 {% if post.writer == user %}
-    <a href="{% url 'main:edit' post.id %}" class = "UD">수정하기</a>
-    <a href="{% url 'main:delete' post.id %}" class = "UD">삭제하기</a>
+    <a href="{% url 'main:edit' post.id %}">수정하기</a>
+    <a href="{% url 'main:delete' post.id %}">삭제하기</a>
 {% endif %}
 
 <div class="comment_container">
@@ -32,13 +32,20 @@
         <form method="POST" action="{% url 'main:detail' post.id %}">
             {% csrf_token %}
             &nbsp;&nbsp;<input type="text" name="content">
-            <input type="submit" name="submit">
+            <input type="submit" name="submit" value="등록">
         </form>
     </div>
     <div class="comment_list">
         {% for comment in comments %}
             <hr>
-            <h4>작성자 : {{ comment.writer }}</h4>
+            <div style="display: flex; align-items: center;">
+                <h5 style="margin-right: 10px;">작성자: {{ comment.writer }}</h5>
+                {% if comment.writer == user %}
+                <a href="#">수정 &nbsp;</a>
+                <a href="{% url 'main:deleteComment' comment.id %}">삭제 </a>
+
+                {% endif %}
+            </div>
             <p>내용 : {{ comment.content }}</p>
             <p>{{ comment.pub_date }}</p>
         {% endfor %}

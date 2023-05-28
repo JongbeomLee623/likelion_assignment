@@ -34,7 +34,8 @@ class Comment(models.Model):
     pub_date = models.DateTimeField()
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, null=False, blank=False, on_delete=models.CASCADE)
-
+    tags = models.ManyToManyField(Tag, related_name='comments', blank=True)
+    
     def __str__(self):
         return self.post.title+" : "+self.content[:20]
     

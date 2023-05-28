@@ -4,6 +4,7 @@
 <div class="post_container">
     <h1>#{{tag}} 게시물 목록</h1>
     <hr>
+    
     {% for post in posts %}
     <div class="post">
         <h2><a class="title" href="{% url 'main:detail' post.id %}">제목 : {{ post.title }}</a></h2>
@@ -12,6 +13,10 @@
     </div>
     <hr>
     {% endfor %}
+
+
+
+
 </div>
 
 {% endblock %}

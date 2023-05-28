@@ -3,14 +3,28 @@
 {% block content %}
 
 <div class="tag_container">
-    <h1>해시태그 목록</h1>
+    <div style="display: flex; align-items: center;">
+        <h1 style="margin-right: 10px;">해시태그 목록</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" name="tagname" style="margin-bottom: 10px;">
+            <button type="submit">검색</button>
+        </form>
+        
+    </div>
+
     <hr>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+        <hr>
+    {% endif %} 
     {% for tag in tags %}
     <div class="tag">
-        <h2 class="title"><a href="{% url 'main:tag_posts' tag.id %}">#{{ tag.name }}</a></h2>
+        <h4 class="title"><a href="{% url 'main:tag_posts' tag.id %}">#{{ tag.name }}</a></h4>
     </div>
     <hr>
     {% endfor %}
+
 </div>
 
 {% endblock %}
