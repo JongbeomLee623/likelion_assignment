@@ -153,3 +153,15 @@ def deleteComment(request, comment_id):
             Tag.objects.annotate(count=models.Count('posts') + models.Count('comments')).filter(count=0).delete()
             return redirect("main:detail", delete_comment.post.id)
     return redirect("accounts:login")
+
+def likes (request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.user in post.like.all():
+        post.like.remove(request.user)
+        post.like_count -= 1
+        post.save()
+    else:
+        post.like.add(request.user)
+        post.like_count +=1
+        post.save()
+    return redirect('main:detail',post_id)

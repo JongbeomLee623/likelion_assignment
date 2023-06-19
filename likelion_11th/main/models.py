@@ -22,6 +22,8 @@ class Post(models.Model):
     mood = models.CharField(max_length=5, choices=MOOD, default='so-so')
     tmi = models.CharField(max_length=100)
     tags = models.ManyToManyField(Tag, related_name='posts', blank=True)
+    like = models.ManyToManyField(User, related_name="likes", blank=True)
+    like_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title

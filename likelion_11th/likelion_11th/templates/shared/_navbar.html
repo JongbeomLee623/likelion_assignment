@@ -16,19 +16,19 @@
             <a class="nav-link active" aria-current="page" href="{% url 'main:secondpage' %}">More Info.</a>
         </li>
         <li class="nav-item dropdown">
-            {% if user.is_authenticated %}
+            {% if request.user.is_authenticated %}
             <!--로그인시 보이는 화면-->
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {% if user.profile.profile_pic %}
-                    <img src="{{ user.profile.profile_pic.url }}" alt="프로필 사진" style="max-height: 25px; max-width: 25px;">
-                    {{ user.username }}
+                {% if request.user.profile.profile_pic %}
+                    <img src="{{ request.user.profile.profile_pic.url }}" alt="프로필 사진" style="max-height: 25px; max-width: 25px;">
+                    {{ request.user.username }}
                 {% else %}
-                    {{ user.username }}
+                    {{ request.user.username }}
                 {% endif %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">로그아웃</a></li>
-                <li><a class="dropdown-item" href="{% url 'users:mypage' %}">mypage</a></li>
+                <li><a class="dropdown-item" href="{% url 'users:mypage' user.id %}">mypage</a></li>
             </ul>
     
         

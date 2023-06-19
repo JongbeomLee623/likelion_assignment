@@ -6,21 +6,35 @@
     {% if user.profile.profile_pic %}
         <img src="{{ user.profile.profile_pic.url }}" alt="프로필 사진" class="profile-pic" onclick="window.open(this.src)">
     {% endif %}
-    <h5> 현재 접속중인 ID: {{ user.username }}</h5>
-    <h5>{{ user.profile.nickname}}님 안녕하세요.</h5>
-    <h5>당신의 학과는 {{ user.profile.department }} 입니다.</h5>
-    <br>
-    <a onclick = "this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
-        <h5>글 목록</h5>
-        </a><div style="DISPLAY: none">
-            <div>
-                    {% for post in posts %}
-                    <div class = 'post'>
-                        <a href="{% url 'main:detail' post.id%}"><h3 class = "title">{{post.title}}</h3></a>
-                    </div>
-                    {% endfor %}
-            </div>
-        </div>
+    
 
+    <div class="container">
+        <h3>{{user.username}}</h3>
+            {% if request.user != user %}
+                {% if request.user.profile in user.profile.followers.all %}
+                    <a href="{% url 'users:follow' user.id %}"><button type="button" class="btn btn-outline-info">언팔로우</button></a>
+                {% else %}
+                    <a href="{% url 'users:follow' user.id %}"><button type="button" class="btn btn-info">팔로우</button></a>
+                {% endif %}
+            {% endif %}
+            
+            <p>팔로워 <br> {{user.profile.followers.count}} 명</p>
+            {% for follower in user.profile.followers.all %}
+                <a href="{% url 'users:mypage' follower.user.id %}">{{follower.user.username}}</a>
+            {% endfor %}
+    
+            <p>팔로잉 <br> {{user.profile.followings.count}} 명</p>
+            {% for following in user.profile.followings.all %}
+                <a href="{% url 'users:mypage' following.user.id %}">{{following.user.username}}</a>
+            {% endfor %}
+    
+        <div>
+            <br>
+            <h3>글 목록</h3>
+            {% for post in posts %}
+            <a href="{% url 'main:detail' post.id %}">{{post.title}}</a>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

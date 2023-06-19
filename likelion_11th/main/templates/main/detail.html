@@ -5,7 +5,7 @@
 <div class = "colorless">
 <h1>{{post.title}}</h1></div>
 <div class = 'detail'>
-    작성자 : {{post.writer}}
+    <a href="{% url 'users:mypage' post.writer.id %}">작성자 : {{post.writer}}</a><br>
     최종 수정 날짜 : {{post.pub_date}}
     {% if post.image %}
             <p><img src="{{post.image.url}}" alt="사진" style="max-height: 600; max-width: 400px;" onclick="window.open(this.src)"></p>
@@ -19,6 +19,14 @@
         <a href="{% url 'main:tag_posts' tag.pk %}">{{ tag.name }}</a>
         {% endfor %}
     </p>
+    <a href="{% url 'main:likes' post.id %}">
+        {% if request.user in post.like.all %}
+            좋아요 취소
+        {% else %}
+            좋아요
+        {% endif %}
+    </a>
+    {{post.like_count}}개
 </div>
 {% if post.writer == user %}
     <a href="{% url 'main:edit' post.id %}">수정하기</a>
