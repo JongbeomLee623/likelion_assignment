@@ -28,7 +28,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">로그아웃</a></li>
-                <li><a class="dropdown-item" href="{% url 'users:mypage' user.id %}">mypage</a></li>
+                <li><a class="dropdown-item" href="{% url 'users:mypage' request.user.id %}">mypage</a></li>
             </ul>
     
         
