@@ -6,7 +6,7 @@ class Album(models.Model):
     id = models.AutoField(primary_key=True)
     artist = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
-    realease_year = models.IntegerField() #년도
+    release_year = models.IntegerField() #년도
     description = models.TextField(max_length=200)
 
 class Track(models.Model):
