@@ -54,7 +54,7 @@ def track_read_create(request, album_id):
         return Response(serializer.data)
 
 @api_view(['GET','PATCH','DELETE'])
-def track_detail_update_delete(request, album_id, track_id):
+def track_detail_update_delete(request, track_id):
     track = get_object_or_404(Track, id=track_id)
 
     if request.method == 'GET':
